@@ -27,6 +27,9 @@ class SocialMediaRecorder extends StatefulWidget {
   /// recording Icon That pressesd to start record
   final Widget? recordIcon;
 
+  /// recording Icon when recording start
+  final Widget? recordInProgressIcon;
+
   /// recording Icon when user locked the record
   final Widget? recordIconWhenLockedRecord;
 
@@ -93,6 +96,7 @@ class SocialMediaRecorder extends StatefulWidget {
     this.startRecording,
     this.stopRecording,
     this.recordIcon,
+    this.recordInProgressIcon,
     this.lockButton,
     this.counterBackGroundColor,
     this.recordIconWhenLockedRecord,
@@ -225,8 +229,10 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
               child: Padding(
                 padding: EdgeInsets.only(right: state.edge),
                 child: Container(
+                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(borderRadius: soundRecordNotifier.isShow ? BorderRadius.circular(12) : widget.radius != null && !soundRecordNotifier.isShow ? widget.radius : BorderRadius.circular(0), color: widget.backGroundColor ?? Colors.grey.shade100),
                   child: Stack(
+                    clipBehavior: Clip.antiAlias,
                     children: [
                       Center(
                         child: ShowMicWithText(
@@ -245,6 +251,7 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
                         Center(
                           child: ShowCounter(
                               counterBackGroundColor: widget.counterBackGroundColor,
+                              recordInProgressIcon: widget.recordInProgressIcon,
                               soundRecorderState: state, fullRecordPackageHeight: widget.fullRecordPackageHeight),
                         ),
                     ],

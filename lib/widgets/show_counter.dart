@@ -8,6 +8,7 @@ class ShowCounter extends StatelessWidget {
   final SoundRecordNotifier soundRecorderState;
   final TextStyle? counterTextStyle;
   final Color? counterBackGroundColor;
+  final Widget? recordInProgressIcon;
   final double fullRecordPackageHeight;
   // ignore: sort_constructors_first
   const ShowCounter({
@@ -16,6 +17,7 @@ class ShowCounter extends StatelessWidget {
     Key? key,
     this.counterTextStyle,
     required this.counterBackGroundColor,
+    this.recordInProgressIcon,
   }) : super(key: key);
 
   @override
@@ -53,12 +55,9 @@ class ShowCounter extends StatelessWidget {
               ),
               const SizedBox(width: 3),
               AnimatedOpacity(
-                duration: const Duration(seconds: 1),
+                duration:  const Duration(seconds: 1),
                 opacity: soundRecorderState.second % 2 == 0 ? 1 : 0,
-                child: const Icon(
-                  Icons.mic,
-                  color: Colors.red,
-                ),
+                child: recordInProgressIcon ?? const Icon(Icons.mic, color: Colors.red),
               ),
               const SizedBox(width: 10),
             ],
