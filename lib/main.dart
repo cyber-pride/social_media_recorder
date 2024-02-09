@@ -48,8 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
                 Padding(
                   padding: const EdgeInsets.only(top: 140, left: 4, right: 4),
                   child: SocialMediaRecorder(
-                    initRecordPackageWidth: 50.3333333333333,
-                    fullRecordPackageHeight: 50.3333333333333,
+                    initRecordPackageWidth: 50.78303918606804,
+                    fullRecordPackageHeight: 50.78303918606804,
                     radius: BorderRadius.circular(360),
                     backGroundColor: Colors.deepPurple,
                     recordIconBackGroundColor: Colors.deepPurple,

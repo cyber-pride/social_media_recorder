@@ -192,7 +192,7 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
     if (state.lockScreenRecord == true) {
       return SoundRecorderWhenLockedDesign(
         cancelText: widget.cancelText,
-        fullRecordPackageHeight: widget.fullRecordPackageHeight,
+        fullRecordPackageHeight: widget.fullRecordPackageHeight.roundToDouble(),
         // cancelRecordFunction: widget.cacnelRecording ?? () {},
         sendButtonIcon: widget.sendButtonIcon,
         cancelTextBackGroundColor: widget.cancelTextBackGroundColor,
@@ -256,7 +256,7 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
                               counterBackGroundColor: widget.counterBackGroundColor,
                               recordInProgressIcon: widget.recordInProgressIcon,
                               soundRecorderState: state,
-                              fullRecordPackageHeight: widget.fullRecordPackageHeight),
+                              fullRecordPackageHeight: widget.fullRecordPackageHeight.roundToDouble()),
                         ),
                     ],
                   ),
