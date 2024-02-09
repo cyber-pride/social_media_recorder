@@ -229,10 +229,9 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
               child: Padding(
                 padding: EdgeInsets.only(right: state.edge),
                 child: Container(
-                  clipBehavior: Clip.hardEdge,
                   decoration: BoxDecoration(borderRadius: soundRecordNotifier.isShow ? BorderRadius.circular(12) : widget.radius != null && !soundRecordNotifier.isShow ? widget.radius : BorderRadius.circular(0), color: widget.backGroundColor ?? Colors.grey.shade100),
                   child: Stack(
-                    clipBehavior: Clip.antiAlias,
+                    clipBehavior: Clip.hardEdge,
                     children: [
                       Center(
                         child: ShowMicWithText(
