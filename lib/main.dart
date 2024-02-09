@@ -64,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       print("stop");
                       // function called when stop recording, return the recording time
                     },
+                    enableAnimation: true,
                     sendRequestFunction: (soundFile, _time) {
                       print("request");
                       //  print("the current path is ${soundFile.path}");

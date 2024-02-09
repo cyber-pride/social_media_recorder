@@ -80,6 +80,9 @@ class SocialMediaRecorder extends StatefulWidget {
   // use to set max record time in second
   final int? maxRecordTimeInSecond;
 
+  // use to set max record time in second
+  final bool? enableAnimation;
+
   // use to change full package Height
   final double fullRecordPackageHeight;
 
@@ -111,6 +114,7 @@ class SocialMediaRecorder extends StatefulWidget {
     this.encode = AudioEncoderType.AAC,
     this.cancelTextBackGroundColor,
     this.radius,
+    this.enableAnimation = true,
     Key? key,
   }) : super(key: key);
 
@@ -220,7 +224,7 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
         }
       },
       child: AnimatedContainer(
-        duration: Duration(milliseconds: soundRecordNotifier.isShow ? 0 : 300),
+        duration: Duration(milliseconds: soundRecordNotifier.isShow ? 0 : (widget.enableAnimation!) ? 300 : 0),
         height: widget.fullRecordPackageHeight.roundToDouble(),
         width: (soundRecordNotifier.isShow) ? MediaQuery.of(context).size.width : widget.initRecordPackageWidth,
         child: Stack(
