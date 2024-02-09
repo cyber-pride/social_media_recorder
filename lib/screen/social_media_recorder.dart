@@ -221,7 +221,7 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
       },
       child: AnimatedContainer(
         duration: Duration(milliseconds: soundRecordNotifier.isShow ? 0 : 300),
-        height: widget.fullRecordPackageHeight,
+        height: widget.fullRecordPackageHeight.roundToDouble(),
         width: (soundRecordNotifier.isShow) ? MediaQuery.of(context).size.width : widget.initRecordPackageWidth,
         child: Stack(
           children: [
@@ -238,7 +238,7 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
                           initRecordPackageWidth: widget.initRecordPackageWidth,
                           counterBackGroundColor: widget.counterBackGroundColor,
                           backGroundColor: widget.recordIconBackGroundColor,
-                          fullRecordPackageHeight: widget.fullRecordPackageHeight,
+                          fullRecordPackageHeight: widget.fullRecordPackageHeight.roundToDouble(),
                           recordIcon: widget.recordIcon,
                           shouldShowText: soundRecordNotifier.isShow,
                           soundRecorderState: state,
@@ -251,7 +251,8 @@ class _SocialMediaRecorder extends State<SocialMediaRecorder> {
                           child: ShowCounter(
                               counterBackGroundColor: widget.counterBackGroundColor,
                               recordInProgressIcon: widget.recordInProgressIcon,
-                              soundRecorderState: state, fullRecordPackageHeight: widget.fullRecordPackageHeight),
+                              soundRecorderState: state,
+                              fullRecordPackageHeight: widget.fullRecordPackageHeight),
                         ),
                     ],
                   ),
