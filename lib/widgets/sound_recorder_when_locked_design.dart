@@ -70,17 +70,9 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                     child: Container(
                       color: recordIconWhenLockBackGroundColor,
                       child: Padding(
-                        padding: const EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(4),
                         child: recordIconWhenLockedRecord ??
-                            sendButtonIcon ??
-                            Icon(
-                              Icons.send,
-                              textDirection: TextDirection.ltr,
-                              size: 28,
-                              color: (soundRecordNotifier.buttonPressed)
-                                  ? Colors.grey.shade200
-                                  : Colors.black,
-                            ),
+                            sendButtonIcon ?? Icon(Icons.send, textDirection: TextDirection.ltr, size: 28, color: (soundRecordNotifier.buttonPressed) ? Colors.grey.shade200 : Colors.black),
                       ),
                     ),
                   ),

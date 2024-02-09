@@ -44,14 +44,24 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Align(
             alignment: Alignment.centerRight,
             child: SocialMediaRecorder(
+              initRecordPackageWidth: 60,
+              fullRecordPackageHeight: 60,
+              radius: BorderRadius.circular(360),
+              backGroundColor: Colors.deepPurple,
+              recordIconBackGroundColor: Colors.deepPurple,
+              recordIcon: Icon(Icons.mic, size: 25, color: Colors.white),
+              recordIconWhenLockBackGroundColor: Colors.deepPurple,
               // maxRecordTimeInSecond: 5,
               startRecording: () {
+                print("start");
                 // function called when start recording
               },
               stopRecording: (_time) {
+                print("stop");
                 // function called when stop recording, return the recording time
               },
               sendRequestFunction: (soundFile, _time) {
+                print("request");
                 //  print("the current path is ${soundFile.path}");
               },
               encode: AudioEncoderType.AAC,
