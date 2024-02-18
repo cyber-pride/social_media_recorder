@@ -105,7 +105,7 @@ class SoundRecordNotifier extends ChangeNotifier {
     if (buttonPressed) {
       if (second > 1 || minute > 0) {
         String path = mPath;
-        String _time = minute.toString() + ":" + second.toString();
+        String _time = minute.toString() + "-" + second.toString();
         sendRequestFunction(File.fromUri(Uri(path: path)), _time);
         stopRecording!(_time);
       }
