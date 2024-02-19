@@ -101,11 +101,12 @@ class SoundRecordNotifier extends ChangeNotifier {
     });
   }
 
-  finishRecording() {
+  finishRecording() async {
     if (buttonPressed) {
       if (second > 1 || minute > 0) {
         String path = mPath;
         String _time = minute.toString() + "-" + second.toString();
+        await stopRecorder();
         sendRequestFunction(File.fromUri(Uri(path: path)), _time);
         stopRecording!(_time);
       }
@@ -113,9 +114,12 @@ class SoundRecordNotifier extends ChangeNotifier {
     resetEdgePadding();
   }
 
+  Future<String?> stopRecorder() async {
+    return await recordMp3.stop();
+  }
+
   /// used to reset all value to initial value when end the record
   resetEdgePadding() async {
-    await recordMp3.stop();
     _localCounterForMaxRecordTime = 0;
     isLocked = false;
     edge = 0;
@@ -128,6 +132,7 @@ class SoundRecordNotifier extends ChangeNotifier {
     lockScreenRecord = false;
     if (_timer != null) _timer!.cancel();
     if (_timerCounter != null) _timerCounter!.cancel();
+    stopRecorder();
     notifyListeners();
   }
 
