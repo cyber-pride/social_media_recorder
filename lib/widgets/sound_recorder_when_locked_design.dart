@@ -47,8 +47,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
         ),
       ),
       child: InkWell(
-        onTap: () async {
-        //  await soundRecordNotifier.stopRecorder();
+        onTap: () {
           soundRecordNotifier.isShow = false;
           soundRecordNotifier.resetEdgePadding();
         },
@@ -82,10 +81,11 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
             ),
             Expanded(
               child: InkWell(
-                  onTap: () async {
-                  //  await soundRecordNotifier.stopRecorder();
+                  onTap: () {
                     soundRecordNotifier.isShow = false;
-                    String _time = soundRecordNotifier.minute.toString() + ":" + soundRecordNotifier.second.toString();
+                    String _time = soundRecordNotifier.minute.toString() +
+                        ":" +
+                        soundRecordNotifier.second.toString();
                     if (stopRecording != null) stopRecording!(_time);
                     soundRecordNotifier.resetEdgePadding();
                   },
