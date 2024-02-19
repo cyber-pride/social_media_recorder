@@ -101,12 +101,12 @@ class SoundRecordNotifier extends ChangeNotifier {
     });
   }
 
-  finishRecording() async {
+  finishRecording() {
     if (buttonPressed) {
       if (second > 1 || minute > 0) {
         String path = mPath;
         String _time = minute.toString() + "-" + second.toString();
-        await stopRecorder();
+        stopRecorder();
         sendRequestFunction(File.fromUri(Uri(path: path)), _time);
         stopRecording!(_time);
       }
