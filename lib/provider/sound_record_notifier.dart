@@ -127,7 +127,7 @@ class SoundRecordNotifier extends ChangeNotifier {
     lockScreenRecord = false;
     if (_timer != null) _timer!.cancel();
     if (_timerCounter != null) _timerCounter!.cancel();
-    recordMp3.stop();
+    await recordMp3.stop();
     notifyListeners();
   }
 
@@ -258,8 +258,8 @@ class SoundRecordNotifier extends ChangeNotifier {
     } else {
       buttonPressed = true;
       String recordFilePath = await getFilePath();
-      _timer = Timer(const Duration(milliseconds: 900), () {
-        recordMp3.start(path: recordFilePath);
+      _timer = Timer(const Duration(milliseconds: 900), () async {
+        await recordMp3.start(path: recordFilePath);
       });
 
       if (startRecord != null) {
