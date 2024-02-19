@@ -116,7 +116,6 @@ class SoundRecordNotifier extends ChangeNotifier {
 
   /// used to reset all value to initial value when end the record
   resetEdgePadding() async {
-    await recordMp3.stop();
     _localCounterForMaxRecordTime = 0;
     isLocked = false;
     edge = 0;
@@ -133,7 +132,7 @@ class SoundRecordNotifier extends ChangeNotifier {
   }
 
   Future<String?> stopRecorder() async {
-   // return await recordMp3.stop();
+    return await recordMp3.stop();
   }
 
   String _getSoundExtention() {
