@@ -101,9 +101,10 @@ class SoundRecordNotifier extends ChangeNotifier {
     });
   }
 
-  finishRecording() {
+  finishRecording() async {
     if (buttonPressed) {
       if (second > 1 || minute > 0) {
+        await stopRecorder();
         String path = mPath;
         String _time = minute.toString() + "-" + second.toString();
         sendRequestFunction(File.fromUri(Uri(path: path)), _time);
@@ -127,8 +128,11 @@ class SoundRecordNotifier extends ChangeNotifier {
     lockScreenRecord = false;
     if (_timer != null) _timer!.cancel();
     if (_timerCounter != null) _timerCounter!.cancel();
-    await recordMp3.stop();
     notifyListeners();
+  }
+
+  Future<String?> stopRecorder() async {
+    return await recordMp3.stop();
   }
 
   String _getSoundExtention() {
@@ -198,6 +202,7 @@ class SoundRecordNotifier extends ChangeNotifier {
         if (position.dx <= MediaQuery.of(context).size.width * 0.6) {
           String _time = minute.toString() + ":" + second.toString();
           if (stopRecording != null) stopRecording!(_time);
+          await stopRecorder();
           resetEdgePadding();
         } else if (x.dx >= MediaQuery.of(context).size.width) {
           edge = 0;
