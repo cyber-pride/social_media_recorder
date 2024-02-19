@@ -85,9 +85,7 @@ class SoundRecorderWhenLockedDesign extends StatelessWidget {
                   onTap: () async {
                     await soundRecordNotifier.stopRecorder();
                     soundRecordNotifier.isShow = false;
-                    String _time = soundRecordNotifier.minute.toString() +
-                        ":" +
-                        soundRecordNotifier.second.toString();
+                    String _time = soundRecordNotifier.minute.toString() + ":" + soundRecordNotifier.second.toString();
                     if (stopRecording != null) stopRecording!(_time);
                     soundRecordNotifier.resetEdgePadding();
                   },
