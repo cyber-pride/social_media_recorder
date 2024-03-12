@@ -110,7 +110,6 @@ class SoundRecordNotifier extends ChangeNotifier {
           //USe to fix android, ios, macos not returning record
           sendRequestFunction(File.fromUri(Uri(path: path)), _time);
           stopRecording!(_time);
-          stopRecorder();
         }else{
           //USe to fix windows not returning record
           stopRecorder().then((value) {
