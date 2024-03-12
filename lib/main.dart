@@ -60,16 +60,16 @@ class _MyHomePageState extends State<MyHomePage> {
                         recordIconWhenLockBackGroundColor: Colors.deepPurple,
                         // maxRecordTimeInSecond: 5,
                         startRecording: () {
-                          print("start");
+                          print("-----------------------------------------------------------start-----------------------------------------------------------");
                           // function called when start recording
                         },
                         stopRecording: (_time) {
-                          print("stop");
+                          print("-----------------------------------------------------------stop-----------------------------------------------------------");
                           // function called when stop recording, return the recording time
                         },
                         enableAnimation: true,
                         sendRequestFunction: (soundFile, _time) {
-                          print("request");
+                          print("-----------------------------------------------------------request-----------------------------------------------------------");
                           //  print("the current path is ${soundFile.path}");
                         },
                         encode: AudioEncoderType.AAC,

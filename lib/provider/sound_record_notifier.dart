@@ -101,15 +101,25 @@ class SoundRecordNotifier extends ChangeNotifier {
     });
   }
 
-  finishRecording() {
+  finishRecording() async {
     if (buttonPressed) {
       if (second > 1 || minute > 0) {
         String path = mPath;
         String _time = minute.toString() + "-" + second.toString();
-        stopRecorder().then((value) {
-          sendRequestFunction(File.fromUri(Uri(path: path)), _time);
-          stopRecording!(_time);
-        });
+        if(Platform.isAndroid || Platform.isIOS || Platform.isMacOS){
+          //USe to fix android, ios, macos not returning record
+          await stopRecorder().then((value) {
+            sendRequestFunction(File.fromUri(Uri(path: path)), _time);
+            stopRecording!(_time);
+          });
+        }else{
+          //USe to fix windows not returning record
+          stopRecorder().then((value) {
+            sendRequestFunction(File.fromUri(Uri(path: path)), _time);
+            stopRecording!(_time);
+          });
+        }
+
       }
     }
     resetEdgePadding();
