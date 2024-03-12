@@ -108,6 +108,7 @@ class SoundRecordNotifier extends ChangeNotifier {
         String _time = minute.toString() + "-" + second.toString();
         if(Platform.isAndroid || Platform.isIOS || Platform.isMacOS){
           //USe to fix android, ios, macos not returning record
+          await stopRecorder();
           sendRequestFunction(File.fromUri(Uri(path: path)), _time);
           stopRecording!(_time);
         }else{
