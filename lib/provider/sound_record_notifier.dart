@@ -108,10 +108,9 @@ class SoundRecordNotifier extends ChangeNotifier {
         String _time = minute.toString() + "-" + second.toString();
         if(Platform.isAndroid || Platform.isIOS || Platform.isMacOS){
           //USe to fix android, ios, macos not returning record
-          await stopRecorder().then((value) {
-            sendRequestFunction(File.fromUri(Uri(path: path)), _time);
-            stopRecording!(_time);
-          });
+          sendRequestFunction(File.fromUri(Uri(path: path)), _time);
+          stopRecording!(_time);
+          stopRecorder();
         }else{
           //USe to fix windows not returning record
           stopRecorder().then((value) {
@@ -126,7 +125,7 @@ class SoundRecordNotifier extends ChangeNotifier {
   }
 
   Future<String?> stopRecorder() async {
-    return await recordMp3.stop();
+    return recordMp3.stop();
   }
 
   /// used to reset all value to initial value when end the record
